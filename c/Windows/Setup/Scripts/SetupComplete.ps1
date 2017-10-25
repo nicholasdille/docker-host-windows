@@ -11,7 +11,7 @@ Remove-Item -Path "$env:ProgramFiles\Docker\docker.zip"
 $env:path += ";$env:ProgramFiles\docker"
 & dockerd.exe --register-service
 $CurrentPath = [Environment]::GetEnvironmentVariable("PATH", [EnvironmentVariableTarget]::Machine)
-[Environment]::SetEnvironmentVariable("PATH", "$env:ProgramFiles\Docker" + $CurrentPath, [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("PATH", $CurrentPath + ";$env:ProgramFiles\Docker", [EnvironmentVariableTarget]::Machine)
 #endregion
 
 #region Start docker
